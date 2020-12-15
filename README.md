@@ -12,7 +12,6 @@ How to compile and run OpenDroneMap on ARM Processor:
 
 - Install Proj 6.1.1 from sudo wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz (follow the install guidelines)
 
-
 - Ln -s /usr/local/lib/libproj.so.15 /usr/lib/ (fix error for pyproj)
 
 ## Install the Require Python Libraries (make sure check the python and numpy version are compatiable and check for new requirements from OpenDroneMap )
@@ -54,29 +53,39 @@ How to compile and run OpenDroneMap on ARM Processor:
 
 ### Run into bin not file directory error in Superbuild/install/bin
 
-#### Fix: Go to Superbuild/install and remove the bin and add bin as (mkdir bin)
+Fix: Go to Superbuild/install and remove the bin and add bin as (mkdir bin)
 
 ### Disable Math Optimization for x86, you can use ARM_NEON.h for ARM Math Optimizations
 
-#### For nearest neighbor , disable SSE2 and SSE3 instruction set for x86 . comment out the lines 
+- For nearest neighbor , disable SSE2 and SSE3 instruction set for x86 . comment out the lines 
+- Nearest_neighbor.h  set define search sse2 to 0 and sse3 to 0
 
-#### Nearest_neighbor.h  set define search sse2 to 0 and sse3 to 0
+File paths:
 
-#### MVS Texturing in Superbuild , in  CMakeList.txt Line 32 comment out -mfpmath=sse
+- ODM/SuperBuild/src/mvstexturing/elibs/mve/libs/sfm/nearest_neighbor.h
+- ODM/SuperBuild/src/elibs/mve/libs/sfm/nearest_neighbor.h
+- I put the edited file in the repository
+- In mvstexturing folder in Superbuild (ODM/SuperBuild/src/mvstexturing), in the CMakeList.txt Line 32 comment out -mfpmath=sse. 
 
 #### Comment out line openmvs_exporter.h  in csfm.cc line 7 and the py::class OpenMVSExporter in the csfm.cc file 
 
-#### Copy the the newest Interface.h from openmvs to Interface.h
+- This was a import error by compiler. Double import.
 
+#### Copy the the newest Interface.h from OpenMvs Github Library to Interface.h.
+
+- File path = ODM/SuperBuild/src/opensfm/opensfm/src/third_party/openmvs/Interface.h
 
 ### Image_io.cc Error for tiff and jpeg exception handing 
 
+Files paths: 
+
+- ODM/SuperBuild/src/mvstexturing/elibs/mve/libs/mve/image_io.cc
+- ODM/SuperBuild/src/elibs/mve/libs/mve/image_io.cc
+
 #### Fix: https://stackoverflow.com/questions/19857766/error-handling-in-libjpeg
 
-#### Edit image_io.cc for tiff and jpeg error exit handlers 
-#### Mve texture links to both sfm and mve -> make sure include the new edits 
-
-#### mvstexturing/lib (mve and sfm files ) 
+- Edit image_io.cc for tiff and jpeg error exit handlers 
+- I put the file in this repository
 
 #### Last
 
