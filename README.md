@@ -47,9 +47,6 @@ How to compile and run OpenDroneMap on ARM Processor:
 
 ## Next Steps:
 
-- cd /Superbuild 
-- mkdir build 
-- sudo cmake ..
 
 ### Run into bin not file directory error in Superbuild/install/bin
 
@@ -85,6 +82,10 @@ Files paths:
 
 - Edit image_io.cc for tiff and jpeg error exit handlers 
 - I put the file in this repository
+
+- cd /Superbuild 
+- mkdir build 
+- sudo cmake ..
 
 # Last
 
