@@ -64,7 +64,6 @@ File paths:
 
 - ODM/SuperBuild/src/mvstexturing/elibs/mve/libs/sfm/nearest_neighbor.h
 - ODM/SuperBuild/src/elibs/mve/libs/sfm/nearest_neighbor.h
-- I put the edited file in the repository
 - In mvstexturing folder in Superbuild (ODM/SuperBuild/src/mvstexturing), in the CMakeList.txt Line 32 comment out -mfpmath=sse. 
 
 #### Comment out line openmvs_exporter.h  in csfm.cc line 7 and the py::class OpenMVSExporter in the csfm.cc file 
