@@ -2,6 +2,9 @@
 
 How to compile and run OpenDroneMap on ARM Processor:
 
+- Install as much of OpenCV dependencies and OpenSfM dependencies and Required Prerequisites as possible
+
+## Next
 - sudo apt-get install sqlite3 
 - sudo apt-get install libsqlite3-dev
 - sudo apt-get install libssl-dev - (for openssl)
